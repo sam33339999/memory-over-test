@@ -1,0 +1,11 @@
+{
+    "name": "sam33339999/memory-over-test",
+    "autoload": {
+        "psr-4": {
+            "Sam33339999\\MemoryOverTest\\": "src/"
+        }
+    },
+    "require": {
+        "symfony/console": "^5.4"
+    }
+}
