@@ -38,18 +38,19 @@ $output->writeln(vsprintf("<info>Current Memory Use: %s\nPeak Memory Use: %s\n</
 ]));
 // and write text on this position using the output
 
-$tmpArr = [];
-
+$tmpArr = [
+    [1, 2, 3, 4], 
+    [1, 2, 3, 4], 
+    [1, 2, 3, 4], 
+    [1, 2, 3, 4], 
+    [1, 2, 3, 4], 
+    [1, 2, 3, 4],
+];
+$idx = 0;
 while(true) {
-    $tmpArr[] = [
-        [1, 2, 3, 4], 
-        [1, 2, 3, 4], 
-        [1, 2, 3, 4], 
-        [1, 2, 3, 4], 
-        [1, 2, 3, 4], 
-        [1, 2, 3, 4],
-    ];
-
+    $tmpArr[$idx+1] = $tmpArr[$idx];
+    $idx++;
+    
     $showMsg = getSizeStr(memory_get_usage(), 2) . ' / '. getSizeStr(memory_get_peak_usage(true), 2);
     print_r($showMsg);
     for ($i = 0; $i < strlen($showMsg); $i++) {
