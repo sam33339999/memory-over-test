@@ -32,13 +32,14 @@ function getSizeStr(int $bytes, int $type = 1) {
     }
 }
 
-// $output->writeln(vsprintf("<info>Current Memory Use: %s\nPeak Memory Use: %s\n</info>", [
-//     getSizeStr(memory_get_usage(), 2),
-//     getSizeStr(memory_get_peak_usage(true), 2)
-// ]));
+$output->writeln(vsprintf("<info>Current Memory Use: %s\nPeak Memory Use: %s\n</info>", [
+    getSizeStr(memory_get_usage(), 2),
+    getSizeStr(memory_get_peak_usage(true), 2)
+]));
 // and write text on this position using the output
 
 $tmpArr = [];
+
 while(true) {
     $tmpArr[] = [
         [1, 2, 3, 4], 
@@ -49,7 +50,9 @@ while(true) {
         [1, 2, 3, 4],
     ];
 
-    $showMsg = getSizeStr(memory_get_usage(), 2);
+    $showMsg = getSizeStr(memory_get_usage(), 2) . ' / '. getSizeStr(memory_get_peak_usage(true), 2);
     print_r($showMsg);
-    $cursor->clearLine();
+    for ($i = 0; $i < strlen($showMsg); $i++) {
+        echo "\x08";
+    }
 }
